@@ -1,0 +1,220 @@
+1 startActivityForResult(A -> B)
+When B activity is landscape <-> Portrait, getIntent().getStringExtra("tag") still  have value.
+
+2 widget
+https://guides.codepath.com/android/Creating-Custom-Listeners#3-implement-listener-callback
+http://www.cnblogs.com/android-html5/archive/2012/05/24/2533942.html
+
+3 How can I create a border around an Android LinearLayout?
+
+key words: linearlayout add border
+
+http://stackoverflow.com/questions/15111402/how-can-i-create-a-border-around-an-android-linearlayout
+
+Create a file called customborder.xml in your drawable folder:
+
+<?xml version="1.0" encoding="UTF-8"?>
+ <shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="rectangle">
+   <corners android:radius="20dp"/> 
+   <padding android:left="10dp" android:right="10dp" android:top="10dp" android:bottom="10dp"/>
+   <solid android:color="#CCCCCC"/>
+ </shape>
+
+
+<LinearLayout android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/customborder">
+
+4. When handle the portrait  <-> landscape, the view must be  both founded in portrait   and landscape layout.  Or  it will NullPointerException when orientation  changes.  When one view in portrait   layout needed, just set  width /height of the view  0dp  in landscape layout .
+
+5 key words:  Java关键字final、static使用总结
+http://lavasoft.blog.51cto.com/62575/18771/
+
+public class Test3 { 
+        private final String S = "final实例变量S"; 
+        private final int A = 100; 
+        public final int B = 90; 
+
+        public static final int C = 80; 
+        private static final int D = 70; 
+
+        public final int E; //final空白,必须在初始化对象的时候赋初值 
+
+        public Test3(int x) { 
+                E = x; 
+        } 
+
+6 android  emulator , Ctrl+F11/F12  is the short key of orientation .
+
+7  Confirm the device is a  tablet  or handset by calculate the screen size of device.  
+(Math.sqrt(Math.pow(screenWidth, 2) + Math.pow(screenHeight, 2))) >= 6.0
+
+
+ 8. 横竖屏切换
+http://blog.csdn.net/jiangxinyu/article/details/8600407
+
+9 many activity in the back stack, when portrait  <-> landscape, only the top activity in the back stack  will change it's lifecycle.
+
+10. key words : INSTALL_PARSE_FAILED_MANIFEST_MALFORMED?
+(1). 申明了新的组件(Activity, Service...etc) 在代码中却没有实现它。
+(2). 组件的Android:Name属性没有写全，应该是.MainActivity这种形式，少了.就不行了。
+(3). 尝试去掉在Service组件中使用的 android:process 属性，然后你就会发现可以将APK刷到设备上了。
+ps:
+android:process
+定义activity运行所在的进程名称。一般情况下，应用的所有组件都运行在为应用创建的默认的进程中，该默认进程的名称应用包名称一致。通过定义<application>元素的“process”属性可以为所有组件指定一个不同的默认进程。但是任意组件都可以重写默认进程，以便实现
+
+多进程操作。
+如果该属性指定名称以“：”开头，则一个新的专属于该应用的进程将会被创建。如果该进程名以小写字母开头，则为该activity提供权限以让其在一个全局的进程中运行。这样会允许多个应用的不同组件共用一个进程，以便节省资源。
+
+11 API 21, 22,23, + Extras.
+12 activity onPause , OnRetainNonConfigurationInstance
+13 fragment  setRetainInstance(true). 
+
+14 In AS , how to locate the file in project or other structure?
+Alt + F1 -> Project View -> Project
+
+15 In As , See the constantly edut files?
+Ctrl + E
+
+16 In AS , input font changes to 全角？
+Shift + backspace.
+
+17 Use ButterKnife, When a view in portrait layout but not in landscape layout(the view included in landscape have it). Use ButterKnife to inject the view, it will have error.
+ButterKnife -> findViewById
+
+18 ListView must support landscape and portrait layout. Landscape in one line(LinearLayout). Protrait in  two line(two (LinearLayout)). 
+In Protrait , When long click the first line, show the second line. however , the long click does not function.
+Resolution: 
+In first line, every view add the long click event.
+
+20. How to retain data?
+Fragment
+onCreate     getData
+onPause      setData
+onCreateView / onResume showData
+
+Activity
+data is static
+onPausee     set fragment data
+
+onPause -> onSaveInstanceState -> onStop -> onRetainNonConfigurationInstance / onRetainCustomNonConfigurationInstance
+
+
+
+2016/1/23
+roll back
+
+1. android  studio gradle update:
+build.grqadle -> multidex: "com.android.support:multidex:${multidexVersion}",
+
+
+ /c/git/Velocity-Android/research/mobile-android-native
+/c/project/android_native_demo/MyApplication
+
+
+2 key words:react-native-gifted-messenger
+ https://github.com/FaridSafi/react-native-gifted-messenger
+
+https://help.github.com/articles/changing-a-remote-s-url/
+
+git reset --hard 6215530bc50
+git checkout task_c15883016850_chart_SupportLookupBonds
+ git checkout velocity_trading
+
+https://help.github.com/articles/changing-a-remote-s-url/
+https://github.com/comeonbaby2015/memo
+http://blog.csdn.net/caoyingsdhzcx/article/details/
+http://blog.csdn.net/caoyingsdhzcx/article/details/50544927
+
+
+1. key words: How can I see what has changed in a file before committing to git?
+# show differences between index and working tree
+# that is, changes you haven't staged to commit
+git diff [filename]
+
+# show differences between current commit and index
+# that is, what you're about to commit
+git diff --cached [filename]
+
+# show differences between current commit and working tree
+git diff HEAD [filename]
+
+http://gitready.com/intermediate/2009/01/30/finding-what-has-been-changed.html
+http://stackoverflow.com/questions/4456532/how-can-i-see-what-has-changed-in-a-file-before-committing-to-git
+
+2. key words:Viewing all `git diffs` with vimdiff
+git config --global diff.tool vimdiff
+git config --global difftool.prompt false
+git config --global alias.d difftool
+http://stackoverflow.com/questions/3713765/viewing-all-git-diffs-with-vimdiff#comment4347998_3713803
+key words: Vimdiff 
+技巧：Vimdiff 使用
+https://www.ibm.com/developerworks/cn/linux/l-vimdiff/
+
+
+3 key words:git 中如何撤销部分修改？
+Index是本地缓存，Working Directory指的是本地还没有提交到缓存里的修改。
+
+for Working directory -- Unmodifying a Modified File
+git checkout -- benchmarks.rb
+
+for index -- Unstaging a Staged File / undo a added file
+$ git reset HEAD benchmarks.rb
+
+Or revert deleted folders
+git checkout -- /root/vdi/vdia/third_party/ClientPlatform/src/
+
+曾经把自己Note里的一些高级指令整理后写成《Git Cookbook》放在这里：
+http://blog.sevenche.com/2014/02/Git-cook-book/
+
+
+4   Changing a remote's URL
+https://help.github.com/articles/changing-a-remote-s-url/
+
+
+2016/1/25
+
+1 RobotoTextView
+
+2 android studio java.net.connectexception connection refused connect 原因
+http://blog.csdn.net/debuglog/article/details/7276052
+
+3 http://html-color-codes.info/
+4 android studio linux
+
+Linux
+
+GNOME or KDE desktop
+GNU C Library (glibc) 2.15 or later
+2 GB RAM minimum, 4 GB RAM recommended
+400 MB hard disk space
+At least 1 GB for Android SDK, emulator system images, and caches
+1280 x 800 minimum screen resolution
+Oracle® Java Development Kit (JDK) 7
+Tested on Ubuntu® 14.04, Trusty Tahr (64-bit distribution capable of running 32-bit applications).
+
+Oracle® Java Development Kit (JDK) 7
+http://www.oracle.com/technetwork/cn/java/javase/downloads/jdk7-downloads-1880260.html
+
+http://www.jianshu.com/p/1f6295f9c955
+http://blog.csdn.net/bettarwang/article/details/44871583
+http://blog.csdn.net/shawnkong/article/details/13510131
+http://www.qisanfen.com/?p=474
+
+
+http://blog.jobbole.com/76447/
+
+http://www.apkbus.com/android-19557-1-1.html
+http://www.cnblogs.com/aimeng/archive/2012/03/13/2393244.html
+http://blog.jobbole.com/76447/
+http://blog.csdn.net/jianghuiquan/article/category/1291936
+
+
+2016/1/27
+
+
+1 git pull conflict
+https://www.cs.swarthmore.edu/~adanner/cs40/f14/git-merge.php
+
+2 Git: Delete a branch (local or remote)
