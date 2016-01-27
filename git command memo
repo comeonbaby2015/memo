@@ -1,0 +1,134 @@
+1 .remote branchB  bases on  remote branchA.
+remote branch B  -> local  remote branch A.
+Other push  A , I push B.
+When first pull B , then  git pull orign A:B, it conflict?
+How to recover the local code to A( befor pull action)
+
+First delete local branch A, then recheckout A, then merge from  B  to A.
+git branch -D B
+git fetch
+git checkout -b local-branchname origin/remote_branchname    => git checkout -b B origin/B
+
+2 How to delete local branch?
+git branch -d A			delete  local branch A
+git branch -D A                 delete  local branch A (force)
+
+3 Show branch info
+git branch -a                                          Show branch in local and remote repository.
+git branch -r                                          Show branch in remote repository.
+
+git branch -av                                        Show branch in local and remote repository,  include  version info.
+
+4 How to delete remote branch?
+git push origin :the_remote_branch
+
+5 Show commit history?
+git whatchanged   显示提交历史及每次提交的改动
+
+6 Merge  branches  
+local  branch A ->  local branch B
+Way 1:
+git checkout B
+git merge A
+When have conflicts,  handle the conflict
+git add
+git commit
+git push origin B
+
+Way 2: 
+git checkout B
+git pull origin A
+When have conflicts,  handle the conflict
+git add
+git commit
+git push origin B
+
+7 How to get the remote branch to local repository?
+git fetch		将远程分支信息获取到本地
+git checkout -b local_branch  origin/remote_branch  将远程分支映射到本地命名为local_branch 
+
+8 Create a local  branch base on one  local branch?
+Now in local branch A, create a  local  branch B  base on A.
+git branch B
+
+
+
+Get the updated remote  branch to local branch?
+git fetch <远程主机名>      将某个远程主机的更新，全部取回本地。
+
+git remote   列出所有远程主机。
+
+
+9 Switch to branch 
+Now in local branch A.
+git checkout  B			(Switch A -> B)
+git checkout  -b B		(Create local branch B based on local branch A, then switch B)
+
+
+pull = fetch + merge
+git pull = git fetch + merge to local
+
+首先，你的每一个操作都是要指明【来源】和【目标】的，而对于 pull 来说，【目标】就是当前分支
+其次，你得清楚 git 是有 tracking 的概念的，所谓 tracking 就是把【来源】和【目标】绑定在一起，节省一些操作是需要输入的参数。
+那么，假设你的 master 和 develop 都是 tracking 了的，于是：
+
+# 当你在 master 下
+$ git pull
+# 等于 fetch origin，然后 merge origin/master
+
+# 当你在 develop 下
+$ git pull
+# 等于 fetch origin，然后 merge origin/develop
+
+Wrap up
+git pull = git fetch + merge
+git fetch 拿到了远程所有分支的更新，我用 cat .git/FETCH_HEAD 可以看到其状态，若都是 not-for-merge 则不会有接下来的 merge 动作
+merge 动作的默认目标是当前分支，若要切换目标，可以直接切换分支
+merge 动作的来源则取决于你是否有 tracking，若有则读取配置自动完成，若无则请指明【来源】
+
+
+克隆版本库的时候，所使用的远程主机自动被Git命名为origin
+git remote	列出所有远程主机。
+git remote -v	列出所有远程主机, -v看远程主机的网址
+git remote show <主机名>	查看该主机的详细信息。
+
+git fetch
+git fetch <远程主机名>	                             将某个远程主机的更新，全部取回本地。	默认情况下，git fetch取回所有分支（branch）的更新。
+git fetch origin
+
+git fetch <远程主机名> <分支名>	取回特定分支的更新，可以指定分支名。
+$ git fetch origin master                            取回origin主机的master分支。
+$ git merge origin/master                           在当前分支上，合并origin/master
+
+$ git branch -r
+origin/master
+
+$ git branch -a
+* master
+  remotes/origin/master
+上面命令表示，本地主机的当前分支是master，远程分支是origin/master。
+
+
+git pull
+git pull命令的作用是，取回远程主机某个分支的更新，再与本地的指定分支合并。它的完整格式稍稍有点复杂。
+git pull <远程主机名> <远程分支名>:<本地分支名>
+git pull origin master:next	取回origin主机的master分支，与本地的next分支合并
+
+git pull origin next		取回origin/next分支，再与当前分支合并。实质上，这等同于先做git fetch，再做git merge。
+$ git fetch origin
+$ git merge origin/next
+
+
+git push
+$ git push <远程主机名> <本地分支名>:<远程分支名>
+$ git push origin master:master    将本地的master分支推送到origin主机的master分支。如果后者不存在，则会被新建。
+$ git push origin master                  将本地的master分支推送到origin主机的master分支。如果后者不存在，则会被新建。
+
+
+
+http://www.ruanyifeng.com/blog/2014/06/git_remote.html
+http://blog.csdn.net/ithomer/article/details/7529022
+http://blog.csdn.net/ithomer/article/details/7529841
+https://git-scm.com/book/zh/v1/Git-%E5%88%86%E6%94%AF-%E5%88%86%E6%94%AF%E7%9A%84%E7%AE%A1%E7%90%86
+https://git-scm.com/doc
+http://wkylin.github.io/web%20front/2014/06/20/git-github/
