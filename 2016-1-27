@@ -1,0 +1,6 @@
+1 http://blog.sevenche.com/2014/02/Git-cook-book/
+2 http://html-color-codes.info/
+3 adb install  error:INSTALL_FAILED_UPDATE_INCOMPATIBLE?
+以前uninstall应用的时候，没有做彻底，只是简单的rm /data/app/下面的apk文件
+4. Error: Power Surge On Hub Port: A USB device has exceeded the power limits of its hub port
+The error also means that there isn't enought power in the USB port where the device is plugged-in. I would suggest connecting the device to another USB port or use a USB hub that supplies it’s own power.
