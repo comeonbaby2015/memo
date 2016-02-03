@@ -1,0 +1,86 @@
+1. How to justify the  loaded layout?
+use tag.
+layout\activity_main.xml
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#00FF00"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/showLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:tag="layout"
+        android:text="showLayout" />
+</LinearLayout>
+
+
+layout-land\activity_main.xml
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0000FF"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/showLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:tag="layout-land"
+        android:text="showLayout" />
+</LinearLayout>
+
+
+    private void way1(Button showLayout) {
+        Toast.makeText(this, showLayout.getTag().toString(), Toast.LENGTH_SHORT).show();
+    }
+
+   // provide different layout in res.
+    private void way2() {
+        int size = getResources().getConfiguration().screenLayout;
+
+        if ((size & Configuration.SCREENLAYOUT_SIZE_XLARGE) == Configuration.SCREENLAYOUT_SIZE_XLARGE)
+        {
+            Toast.makeText(this, "SCREENLAYOUT_SIZE_XLARGE", Toast.LENGTH_SHORT).show();
+        }
+        else if((size & Configuration.SCREENLAYOUT_SIZE_LARGE) == Configuration.SCREENLAYOUT_SIZE_LARGE)
+        {
+            Toast.makeText(this, "SCREENLAYOUT_SIZE_LARGE", Toast.LENGTH_SHORT).show();
+
+        }
+        else if((size & Configuration.SCREENLAYOUT_SIZE_NORMAL) == Configuration.SCREENLAYOUT_SIZE_NORMAL)
+        {
+            Toast.makeText(this, "SCREENLAYOUT_SIZE_NORMAL", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+2 adb install
+http://delphi.org/2013/11/installing-and-running-android-apps-from-command-line/
+http://stackoverflow.com/questions/28685945/differenct-between-adb-install-command-and-pm-install-command
+http://adbshell.com/commands/adb-install
+
+3  android:exported
+http://blog.csdn.net/think_soft/article/details/7584895
+
+4 
+            android:exported="true"
+ <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+  android:exported="false" Application is not installed.
+
+
