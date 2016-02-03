@@ -1,0 +1,21 @@
+11:16 AM
+
+store
+appendices
+
+1 setRequestedOrientation
+通过setRequestedOrientation(xxx)方法设置与在AndroidManifest.xml文件中配置是等效的，因此通过以上例程明确指定方向后，Activity将不再自动根据物理传感器进行横竖屏切换，若要恢复，再调用setRequestedOrientation(UNSPECIFIED)即可。
+
+update  android studio
+http://blog.csdn.net/lvron/article/details/12045875
+
+
+debug
+http://gold.xitu.io/entry/567a1c8f00b06f9f616f5134
+http://www.cnblogs.com/firstcsharp/p/4333264.html
+
+internal app
+http://developer.android.com/tools/help/translations-editor.html
+il18n
+
+
