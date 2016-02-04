@@ -1,0 +1,44 @@
+store
+appendices
+
+1 setRequestedOrientation
+通过setRequestedOrientation(xxx)方法设置与在AndroidManifest.xml文件中配置是等效的，因此通过以上例程明确指定方向后，Activity将不再自动根据物理传感器进行横竖屏切换，若要恢复，再调用setRequestedOrientation(UNSPECIFIED)即可。
+
+2 android:exported="false" Application is not installed
+MainActivity 设置false，只能安装。启动时提示“”Application is  not installed.
+
+3 
+http://developer.android.com/tools/help/translations-editor.html#about
+il18n
+
+10:04 AM
+1 http://gold.xitu.io/entry/567a1c8f00b06f9f616f5134
+条件断点
+Ctrl + Shift + F8  在断点行进入条件断点设置界面。再按一次进入断点察看界面。
+
+2 
+Genymotion
+GsonFormat
+ButterKnife
+.adb-idea
+ParcelableGenerator
+.ideaVim
+LeakCanary
+checkStyle 和　findBugs
+
+http://www.zhihu.com/question/28026027
+https://www.zhihu.com/question/28527388
+http://www.jcodecraeer.com/a/anzhuokaifa/Android_Studio/2015/1009/3557.html
+
+4 classpath 'com.android.tools.build:gradle:2.0.0-alpha9
+http://tools.android.com/download/studio/builds/2-0-preview-9
+
+5 
+https://github.com/JakeWharton
+
+6 color
+https://www.google.com/design/spec/style/color.html#color-color-palette
+http://saminjava.blogspot.hk/2013/08/android.html
+
+7. 
+http://developer.android.com/training/multiscreen/screensizes.html
